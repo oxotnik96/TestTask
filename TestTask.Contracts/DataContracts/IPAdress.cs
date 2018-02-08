@@ -13,6 +13,7 @@ namespace TestTask.Contracts.DataContracts
         public int ID_IP { get; set; }
         public string IP { get; set; }
         public string Name_of_company { get; set; }
+
         public ICollection<MainLog> Mainlog { get; set; }
     }
 }

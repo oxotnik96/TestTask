@@ -13,12 +13,13 @@ namespace TestTask.Controllers
     {
 
         private readonly TestTaskContext context = new TestTaskContext();
-        private readonly IFilesRepository Files;
+        private readonly IFilesRepository fileRepository;
+
         public ActionResult Index()
         {
             IList<FilesModel> model = new List<FilesModel>();
 
-            foreach (var item in Files.GetAll())
+            foreach (var item in fileRepository.GetAll())
             {
                 model.Add(
                     new FilesModel

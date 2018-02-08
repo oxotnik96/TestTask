@@ -14,6 +14,7 @@ namespace TestTask.Contracts.DataContracts
         public string Way { get; set; }
         public string Title { get; set; }
         public int Size { get; set; }
+
         public ICollection<MainLog> Mainlog { get; set; }
     }
 }

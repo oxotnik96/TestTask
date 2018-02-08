@@ -10,10 +10,16 @@ using TestTask.DAL.DataBase;
 
 namespace TestTask.DAL.Repositories
 {
-    class FilesRepositories : IFilesRepository
+    public class FilesRepositories : IFilesRepository
     {
         internal TestTaskContext db;
         internal DbSet<Files> dbSet;
+
+        public FilesRepositories(TestTaskContext db)
+        {
+            this.db = db;
+            this.dbSet = db.Set<Files>();
+        }
 
         public void Add(Files report)
         {
@@ -27,7 +33,8 @@ namespace TestTask.DAL.Repositories
 
         public IEnumerable<Files> GetAll()
         {
-            throw new NotImplementedException();
+            var result = dbSet.ToList();
+            return result;
         }
 
         public Files GetById(int id)

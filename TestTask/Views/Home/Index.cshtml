@@ -15,17 +15,37 @@
         <th>Результат</th>
         <th>Тип</th>
         <th>Дата</th>
+        <th>IP</th>
+        <th>NameIP</th>
+        <th>Way</th>
+        <th>Title</th>
+        <th>Size</th>
     </tr>
     @if (Model != null)
     {
         foreach (MainLogModel mainlog in Model)
         {
-            <tr>
-                <td>@mainlog.ID</td>
-                <td>@mainlog.result</td>
-                <td>@mainlog.type</td>
-                <td>@mainlog.date</td>
-            </tr>
+    <tr>
+        <td>@mainlog.ID</td>
+        <td>@mainlog.result</td>
+        <td>@mainlog.type</td>
+        <td>@mainlog.date</td>
+        <td>
+            @(mainlog.IPAdress.FirstOrDefault(item => item.ID_IP == mainlog.IPAdressId)?.IP)
+        </td>
+        <td>
+            @(mainlog.IPAdress.FirstOrDefault(item => item.ID_IP == mainlog.IPAdressId)?.Name_of_company)
+        </td>
+        <td>
+            @(mainlog.Files.FirstOrDefault(item => item.ID_of_file == mainlog.FilesId)?.Way)
+        </td>
+        <td>
+            @(mainlog.Files.FirstOrDefault(item => item.ID_of_file == mainlog.FilesId)?.Title)
+        </td>
+        <td>
+            @(mainlog.Files.FirstOrDefault(item => item.ID_of_file == mainlog.FilesId)?.Size)
+        </td>
+    </tr>
         }
     }
 </table>

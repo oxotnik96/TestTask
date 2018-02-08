@@ -12,9 +12,17 @@ namespace TestTask.Contracts.DataContracts
         [Key]
         public int ID { get; set; }
         public Files Files { get; set; }
+        public int IdFiles { get; set; }
+
         public IPAdress IpAdress { get; set; }
+        public int IdAdress { get; set; }
+
         public DateTime date { get; set; }
         public string type { get; set; }
         public int result { get; set; }
+
+        
+       
+
     }
 }

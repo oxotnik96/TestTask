@@ -10,11 +10,16 @@ using TestTask.DAL.DataBase;
 
 namespace TestTask.DAL.Repositories
 {
-    class MainLogRepositories : IMainLogRepository
+    public class MainLogRepositories : IMainLogRepository
     {
         internal TestTaskContext db;
         internal DbSet<MainLog> dbSet;
 
+        public MainLogRepositories(TestTaskContext db)
+        {
+            this.db = db;
+            this.dbSet = db.Set<MainLog>();
+        }
 
         public virtual IEnumerable<MainLog> GetAll()
         {
