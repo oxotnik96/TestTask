@@ -1,0 +1,38 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using TestTask.Contracts.Interfaces;
+using TestTask.DAL.DataBase;
+using TestTask.Models;
+
+namespace TestTask.Controllers
+{
+    public class MainLogController : Controller
+    {
+
+        private readonly TestTaskContext context = new TestTaskContext();
+        private readonly IMainLogRepository mainLog;
+        public ActionResult Index()
+        {
+            IList<MainLogModel> model = new List<MainLogModel>();
+
+            foreach (var item in mainLog.GetAll())
+            {
+                model.Add(
+                    new MainLogModel
+                    {
+                        ID = item.ID,
+                        date = item.date,
+                        result = item.result,
+                        type = item.type,
+                    }
+                );
+            }
+
+            return View("Index", model);
+        }
+
+    }
+}

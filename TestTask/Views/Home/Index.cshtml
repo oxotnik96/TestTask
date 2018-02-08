@@ -1,0 +1,32 @@
+﻿@using TestTask.Models
+
+@model IEnumerable<MainLogModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<h2>БД</h2>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Результат</th>
+        <th>Тип</th>
+        <th>Дата</th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (MainLogModel mainlog in Model)
+        {
+            <tr>
+                <td>@mainlog.ID</td>
+                <td>@mainlog.result</td>
+                <td>@mainlog.type</td>
+                <td>@mainlog.date</td>
+            </tr>
+        }
+    }
+</table>
+@Html.ActionLink("Index", "Index", "MainLog", new { @class = "btn btn-default" })

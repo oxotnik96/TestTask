@@ -1,0 +1,28 @@
+﻿@using TestTask.Models
+
+@model IEnumerable<IPAdressModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Жанры</h2>
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>IP</th>
+        <th>Название компании</th>
+    </tr>
+    @if (Model != null)
+    {
+        foreach (IPAdressModel ipadress in Model)
+        {
+    <tr>
+        <td>@ipadress.ID_IP</td>
+        <td>@ipadress.IP</td>
+        <td>@ipadress.Name_of_company</td>
+    </tr>
+        }
+    }
+</table>
+@Html.ActionLink("Index", "Index", "IPAdress", new { @class = "btn btn-default" })
